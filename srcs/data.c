@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "lem-in.h"
 
 t_data	*data_init(void)
@@ -22,7 +23,20 @@ t_data	*data_init(void)
 			ft_error("error malloc data");
 		d->start = NULL;
 		d->end = NULL;
-		d->list_room = NULL;
+		if ((d->list_room = (t_room **)malloc(sizeof(t_room))) == NULL)
+			ft_error("error malloc pointer room");
 	}
 	return (d);
+}
+
+void	add_nb_ant(char *str)
+{
+	t_data	*d;
+
+	d = data_init();
+	if (!ft_is_number(str))
+		ft_error("Fist line isn't a number");
+	d->ant = ft_atoi(str);
+	d->ant_start = d->ant;
+	d->ant_end = 0;
 }

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "lem-in.h"
 
-int		pars_in(void)
+int		parse_entry(void)
 {
 	char	*line;
 	char	**tmp;
@@ -51,9 +51,8 @@ int		add_position(int fd, int pos)
 	if ((get_next_line(FD, &line) > 0) && tmp = ft_strsplit(line, ' ')
 		&& tmp[1])
 	{
-		ret = add_room(tmp);
+		ret = add_room(tmp, pos);
 		if (ret != -1)
-
 	}
 }
 
@@ -63,21 +62,26 @@ int		add_room(char **room, int pos)
 	int		x;
 	int		y;
 	t_data	*d;
+	t_room	*room
 
 	i = 0;
+	d = data_init();
 	while (room[i])
 		i++;
-	if (i != 3)
+	if (i != 3 || !ft_is_number(room[1]) || !ft_is_number(room[2]))
 		return (-1);
-	if (!ft_is_number(room[1]) || !ft_is_number(room[2]))
+	if ((pos == START && d->start != NULL) || (pos == END && d->end != NULL))
 		return (-1);
 	x = ft_atoi(room[1]);
 	y = ft_atoi(room[2])
 	free(room[1]);
 	free(room[2]);
-	list_add_room(room[0], x, y);
-	if (pos == START)
-
+	if ((room = list_add_room(room[0], x, y)) == NULL)
+		return (-1);
+	if (pos == START && d->start == NULL)
+		d->start = room;
+	else if (pos == END && d->end == NULL)
+		d->end = room;
 	return (0);
 }
 

@@ -18,19 +18,19 @@
 # define START	1
 # define END	2
 
-typedef struct			s_con
+typedef struct			s_pipe
 {
 	struct s_room		*room;
 	struct t_con		*next;
-}						t_con;
+}						t_pipe;
 
 typedef struct			s_room
 {
 	char				*name;
 	int					x;
-	int					y
+	int					y;
 	struct s_room		*next;
-	t_con				*con;
+	t_pipe				*pipe;
 }						t_room;
 
 typedef struct			s_data
@@ -38,6 +38,9 @@ typedef struct			s_data
 	t_room				*start;
 	t_room				*end;
 	t_room				**list_room;
+	int					ant;
+	int					ant_start;
+	int					ant_end;
 }						t_data;
 
 /*
@@ -49,19 +52,27 @@ void			ft_error(char *str);
 ** data.c
 */
 t_data			*data_init(void);
+void			add_nb_ant(char *str);
 
 /*
 ** parser.c
 */
-int				pars_in(void);
+int				parse_entry(void);
 int				add_position(int fd, int pos);
 int				add_room(char **room, int pos);
 int				add_pipe(char **pipe);
 
 /*
-** graph.c
+** room.c
 */
-t_list_node		*create_node(int v);
-t_graph			*create_graph(int n);
+t_room			*new_room(char *name, int x, int y);
+t_room			*list_add_room(char *name, int x, int y);
+
+/*
+** pipe.c
+*/
+t_pipe			*pipe_new(t_room *room);
+int				list_add_pipe(char *room1, char *room2);
+void			pipe_room(t_room *room, t_room *pipe)
 
 #endif /* !LEM_IN_H */
