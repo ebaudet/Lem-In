@@ -21,7 +21,7 @@ t_pipe	*pipe_new(t_room *room)
 		ft_error("error malloc new pipe");
 	pipe->next = NULL;
 	pipe->room = room;
-	return (room);
+	return (pipe);
 }
 
 int		list_add_pipe(char *room1, char *room2)
@@ -50,7 +50,6 @@ int		list_add_pipe(char *room1, char *room2)
 
 void	pipe_room(t_room *room, t_room *pipe)
 {
-	t_pipe	*pipe;
 	t_pipe	*tmp;
 
 	if (!room->pipe)

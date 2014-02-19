@@ -29,9 +29,9 @@ int		parse_entry(void)
 			ret = add_position(FD, END);
 		else if (line[0] == '#')
 			continue ;
-		else if (tmp = ft_strsplit(line, ' ') && tmp[1])
-			ret = add_room(tmp);
-		else if (free_tab(tmp) && tmp = ft_strsplit(line, '-') && tmp[1])
+		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
+			ret = add_room(tmp, 0);
+		else if (free_tab(tmp) && (tmp = ft_strsplit(line, '-')) && tmp[1])
 			ret = add_pipe(tmp);
 		else if (free_tab(tmp))
 			return (-1);
@@ -48,12 +48,11 @@ int		add_position(int fd, int pos)
 	char	**tmp;
 	int		ret;
 
-	if ((get_next_line(FD, &line) > 0) && tmp = ft_strsplit(line, ' ')
+	ret = -1;
+	if ((get_next_line(fd, &line) > 0) && (tmp = ft_strsplit(line, ' '))
 		&& tmp[1])
-	{
 		ret = add_room(tmp, pos);
-		if (ret != -1)
-	}
+	return (ret);
 }
 
 int		add_room(char **room, int pos)
@@ -62,7 +61,7 @@ int		add_room(char **room, int pos)
 	int		x;
 	int		y;
 	t_data	*d;
-	t_room	*room
+	t_room	*new;
 
 	i = 0;
 	d = data_init();
@@ -73,15 +72,15 @@ int		add_room(char **room, int pos)
 	if ((pos == START && d->start != NULL) || (pos == END && d->end != NULL))
 		return (-1);
 	x = ft_atoi(room[1]);
-	y = ft_atoi(room[2])
+	y = ft_atoi(room[2]);
 	free(room[1]);
 	free(room[2]);
-	if ((room = list_add_room(room[0], x, y)) == NULL)
+	if ((new = list_add_room(room[0], x, y)) == NULL)
 		return (-1);
 	if (pos == START && d->start == NULL)
-		d->start = room;
+		d->start = new;
 	else if (pos == END && d->end == NULL)
-		d->end = room;
+		d->end = new;
 	return (0);
 }
 

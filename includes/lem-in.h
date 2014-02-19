@@ -21,7 +21,7 @@
 typedef struct			s_pipe
 {
 	struct s_room		*room;
-	struct t_con		*next;
+	struct s_pipe		*next;
 }						t_pipe;
 
 typedef struct			s_room
@@ -49,6 +49,11 @@ typedef struct			s_data
 void			ft_error(char *str);
 
 /*
+** ft_is_number.c
+*/
+int				ft_is_number(char *str);
+
+/*
 ** data.c
 */
 t_data			*data_init(void);
@@ -73,6 +78,11 @@ t_room			*list_add_room(char *name, int x, int y);
 */
 t_pipe			*pipe_new(t_room *room);
 int				list_add_pipe(char *room1, char *room2);
-void			pipe_room(t_room *room, t_room *pipe)
+void			pipe_room(t_room *room, t_room *pipe);
+
+/*
+** tools.c
+*/
+int				free_tab(char **tab);
 
 #endif /* !LEM_IN_H */
