@@ -19,7 +19,7 @@ int		parse_entry(void)
 	char	**tmp;
 	int		ret;
 
-	if (get_next_line(FD, &line) > 0)
+	if (get_next_line(FD, &line))
 		add_nb_ant(line);
 	while (get_next_line(FD, &line) > 0)
 	{
@@ -31,11 +31,10 @@ int		parse_entry(void)
 			continue ;
 		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
 			ret = add_room(tmp, 0);
-		else if (free_tab(tmp) && (tmp = ft_strsplit(line, '-')) && tmp[1])
+		else if ((tmp = ft_strsplit(line, '-')) && tmp[1])
 			ret = add_pipe(tmp);
-		else if (free_tab(tmp))
+		else
 			return (-1);
-		free(tmp);
 		if (ret == -1)
 			return (-1);
 	}
@@ -93,5 +92,5 @@ int		add_pipe(char **pipe)
 		i++;
 	if (i != 2)
 		return (-1);
-	return (list_add_pipe(pipe[0], pipe[i]));
+	return (list_add_pipe(pipe[0], pipe[1]));
 }

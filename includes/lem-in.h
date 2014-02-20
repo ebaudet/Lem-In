@@ -14,7 +14,7 @@
 # define LEM_IN_H
 
 # include "libft.h"
-# define FD		1
+# define FD		0
 # define START	1
 # define END	2
 

@@ -28,23 +28,25 @@ int		list_add_pipe(char *room1, char *room2)
 {
 	t_data	*d;
 	t_room	*tmp;
-	t_room	*tmp2;
+	t_room	*ptr_room1;
+	t_room	*ptr_room2;
 
-	tmp2 = NULL;
+	ptr_room1 = NULL;
+	ptr_room2 = NULL;
 	d = data_init();
 	tmp = *(d->list_room);
-	while (tmp)
+	while (tmp && !(ptr_room1 && ptr_room2))
 	{
 		if (!ft_strcmp(tmp->name, room2))
-			tmp2 = tmp;
+			ptr_room2 = tmp;
 		if (!ft_strcmp(tmp->name, room1))
-			break ;
+			ptr_room1 = tmp;
 		tmp = tmp->next;
 	}
-	if (!tmp || !tmp2)
+	if (!ptr_room1 || !ptr_room2)
 		return (-1);
-	pipe_room(tmp, tmp2);
-	pipe_room(tmp2, tmp);
+	pipe_room(ptr_room1, ptr_room2);
+	pipe_room(ptr_room2, ptr_room1);
 	return (0);
 }
 
