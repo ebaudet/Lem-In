@@ -22,7 +22,7 @@ int		free_tab(char **tab)
 		return (0);
 	while (tab[++i])
 		free(tab[i]);
-	/*free(tab);
-	tab = NULL;*/
+	free(tab);
+	tab = NULL;
 	return (0);
 }
