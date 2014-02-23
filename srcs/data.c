@@ -25,6 +25,7 @@ t_data	*data_init(void)
 		d->end = NULL;
 		if ((d->list_room = (t_room **)malloc(sizeof(t_room))) == NULL)
 			ft_error("error malloc pointer room");
+		d->path = NULL;
 	}
 	return (d);
 }

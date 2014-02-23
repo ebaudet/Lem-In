@@ -24,6 +24,7 @@ t_room	*new_room(char *name, int x, int y)
 	room->name = name;
 	room->next = NULL;
 	room->pipe = NULL;
+	room->path = 0;
 	return (room);
 }
 
@@ -51,4 +52,21 @@ t_room	*list_add_room(char *name, int x, int y)
 	else
 		tmp->next = room;
 	return (room);
+}
+
+void	count_room(void)
+{
+	t_data	*d;
+	int		len;
+	t_room	*tmp;
+
+	d = data_init();
+	tmp = *(d->list_room);
+	len = 0;
+	while (tmp)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	d->nb_room = len;
 }

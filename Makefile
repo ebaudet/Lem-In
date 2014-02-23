@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 NAME	= lem-in
-FILES	= main.c error.c data.c parser.c room.c pipe.c ft_is_number.c tools.c
+FILES	= main.c error.c data.c parser.c room.c pipe.c ft_is_number.c tools.c \
+	print.c path.c find_path.c follow_path.c
 SRCS	= $(addprefix srcs/, $(FILES))
 OBJS	= $(SRCS:srcs/%.c=.obj/%.o)
 INC		= -I includes -I libft/includes

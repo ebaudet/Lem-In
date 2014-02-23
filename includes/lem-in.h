@@ -31,16 +31,28 @@ typedef struct			s_room
 	int					y;
 	struct s_room		*next;
 	t_pipe				*pipe;
+	char				path;
 }						t_room;
+
+typedef struct			s_path
+{
+	t_room				*room;
+	struct s_path		*next;
+	struct s_path		*prev;
+	int					ant;
+	int					this_ant;
+}						t_path;
 
 typedef struct			s_data
 {
 	t_room				*start;
 	t_room				*end;
 	t_room				**list_room;
+	t_path				*path;
 	int					ant;
 	int					ant_start;
 	int					ant_end;
+	int					nb_room;
 }						t_data;
 
 /*
@@ -72,6 +84,7 @@ int				add_pipe(char **pipe);
 */
 t_room			*new_room(char *name, int x, int y);
 t_room			*list_add_room(char *name, int x, int y);
+void			count_room(void);
 
 /*
 ** pipe.c
@@ -84,5 +97,32 @@ void			pipe_room(t_room *room, t_room *pipe);
 ** tools.c
 */
 int				free_tab(char **tab);
+
+/*
+** print.c
+*/
+void			print_room(void);
+void			print_pipe(void);
+void			print_lemin(int num_lemin, char *room, int i);
+
+/*
+** path.c
+*/
+t_path			*new_path(t_path *prev, t_room *room, t_path *next, int ant);
+void			add_end_path(t_data *d, t_room *room);
+int				delete_last_path(t_data *d);
+
+/*
+** find_path.c
+*/
+int				search_end(t_room *pos, t_data *d);
+void			find_path(t_data *d);
+int				find_good_node(t_room **scout, int find, t_data *d);
+
+/*
+** follow_path.c
+*/
+void			follow_path(t_data *d);
+void			in_node(t_path *tmp, int *new_lemin, int *i, t_data *d);
 
 #endif /* !LEM_IN_H */
