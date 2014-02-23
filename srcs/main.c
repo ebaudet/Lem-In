@@ -18,6 +18,8 @@ int		main(void)
 
 	d = data_init();
 	parse_entry();
+	if (!d->start || !d->end)
+		ft_error("ERROR");
 	find_path(d);
 	print_room();
 	print_pipe();
