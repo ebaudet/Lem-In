@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 gdb:
 	make -C libft
 	cc -g $(FLAGS) $(SRCS) -o $(NAME) $(INC) $(INC) $(LIB)
-	gdb $(NAME)
+	lldb $(NAME)
 
 clean:
 	rm -rf .obj

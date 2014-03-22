@@ -19,8 +19,9 @@ int		parse_entry(void)
 	char	**tmp;
 	int		ret;
 
-	if (get_next_line(FD, &line))
-		add_nb_ant(line);
+	if (get_next_line(FD, &line) <= 0)
+		return (-1);
+	add_nb_ant(line);
 	while (get_next_line(FD, &line) > 0)
 	{
 		if (!ft_strcmp(line, "##start"))
