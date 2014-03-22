@@ -24,7 +24,7 @@ SRCS 	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		get_next_line.c
 DIRSRC	= $(addprefix ./ ,$(SRCS))
-OBJS	= ${SRCS:.c=.o}
+OBJS	= ${SRCS:%.c=.obj/%.o}
 INC		= ./includes/
 FLAGS	= -Wall -Wextra -Werror -fno-builtin -fno-stack-protector -pedantic -ansi
 DEBUGFLG = -v -da -Q
@@ -35,14 +35,18 @@ RANLIB	= ranlib
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(RANLIB) $(NAME)
+	@echo ""
+	@$(AR) $(NAME) $(OBJS)
+	@$(RANLIB) $(NAME)
+	@echo "création de $(NAME)"
 
-%.o: %.c
-	$(CC) -c $< -o $@ $(FLAGS) -I $(INC)
+.obj/%.o: %.c
+	@mkdir -p .obj
+	@$(CC) -c $< -o $@ $(FLAGS) -I $(INC)
+	@printf .
 
 clean:
-	rm -f $(OBJS)
+	rm -rf .obj
 
 fclean: clean
 	rm -f $(NAME)
