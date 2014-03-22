@@ -26,8 +26,7 @@ SRCS 	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 DIRSRC	= $(addprefix ./ ,$(SRCS))
 OBJS	= ${SRCS:.c=.o}
 INC		= ./includes/
-FLAGS	= -Wall -Wextra -Werror -fno-builtin -fno-stack-protector -pedantic \
-		-ansi
+FLAGS	= -Wall -Wextra -Werror -fno-builtin -fno-stack-protector -pedantic -ansi
 DEBUGFLG = -v -da -Q
 CC		= gcc
 AR		= ar rc
