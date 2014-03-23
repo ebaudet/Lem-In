@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:17:54 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 21:20:29 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 21:26:07 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		parse_entry(void)
 		else if (line[0] == '#')
 			continue ;
 		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
-			ret = add_room(tmp, 0);
+			ret = add_room(tmp, 0, 0);
 		else if (!free_tab(tmp) && !(tmp = NULL)
 			&& (tmp = ft_strsplit(line, '-')) && tmp[1])
 			ret = add_pipe(tmp);
@@ -53,19 +53,17 @@ int		add_position(char **line, int fd, int pos)
 	ft_strdel(line);
 	if ((get_next_line(fd, line) > 0) && (tmp = ft_strsplit(*line, ' '))
 		&& tmp[1])
-		ret = add_room(tmp, pos);
+		ret = add_room(tmp, pos, 0);
 	return (ret);
 }
 
-int		add_room(char **room, int pos)
+int		add_room(char **room, int pos, int i)
 {
-	int		i;
 	int		x;
 	int		y;
 	t_data	*d;
 	t_room	*new;
 
-	i = 0;
 	d = data_init();
 	while (room[i])
 		i++;
