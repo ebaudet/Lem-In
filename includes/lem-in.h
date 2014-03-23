@@ -6,14 +6,13 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:53 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/18 21:12:53 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:22:38 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "libft.h"
 # define FD		0
 # define START	1
 # define END	2

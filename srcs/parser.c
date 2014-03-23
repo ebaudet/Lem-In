@@ -6,12 +6,13 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:17:54 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/19 20:17:54 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:23:49 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 int		parse_entry(void)
 {

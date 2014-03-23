@@ -6,12 +6,12 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:51:00 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/18 21:51:00 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:23:19 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "lem-in.h"
+#include "libft.h"
 
 void	ft_error(char *str)
 {

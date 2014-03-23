@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 t_data	*data_init(void)
 {
@@ -37,6 +38,7 @@ void	add_nb_ant(char *str)
 	d = data_init();
 	while (str[0] == '#')
 	{
+		ft_strdel(&str);
 		if (get_next_line(FD, &str) <= 0)
 			ft_error("ERROR");
 	}
@@ -45,4 +47,5 @@ void	add_nb_ant(char *str)
 	d->ant = ft_atoi(str);
 	d->ant_start = d->ant;
 	d->ant_end = 0;
+	ft_strdel(&str);
 }

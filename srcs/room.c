@@ -6,12 +6,13 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 23:17:03 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/19 23:17:03 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:24:07 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 t_room	*new_room(char *name, int x, int y)
 {

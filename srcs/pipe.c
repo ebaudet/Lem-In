@@ -6,12 +6,13 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 23:22:04 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/19 23:22:04 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:24:25 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 t_pipe	*pipe_new(t_room *room)
 {

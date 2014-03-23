@@ -6,11 +6,12 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/20 21:37:08 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/20 21:37:08 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:25:05 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
+#include "libft.h"
 
 void	print_room(void)
 {
