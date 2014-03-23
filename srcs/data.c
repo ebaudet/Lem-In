@@ -35,6 +35,11 @@ void	add_nb_ant(char *str)
 	t_data	*d;
 
 	d = data_init();
+	while (str[0] == '#')
+	{
+		if (get_next_line(FD, &str) <= 0)
+			ft_error("ERROR");
+	}
 	if (!ft_is_number(str))
 		ft_error("Fist line isn't a number");
 	d->ant = ft_atoi(str);

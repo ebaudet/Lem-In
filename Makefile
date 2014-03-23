@@ -18,7 +18,7 @@ OBJS	= $(SRCS:srcs/%.c=.obj/%.o)
 INC		= -I includes -I libft/includes
 FLAGS	= -Wall -Wextra -Werror
 LIB		= -L libft -lft
-CC		= cc
+CC		= gcc
 
 all: $(NAME)
 
