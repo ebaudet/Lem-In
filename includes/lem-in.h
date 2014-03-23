@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:53 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 21:26:22 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 22:36:59 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ int				find_good_node(t_room **scout, int find, t_data *d);
 */
 void			follow_path(t_data *d);
 void			in_node(t_path *tmp, int *new_lemin, int *i, t_data *d);
+void			all_at_the_end(t_data *d);
 
 #endif /* !LEM_IN_H */
