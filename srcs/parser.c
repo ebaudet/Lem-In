@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:17:54 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 20:38:08 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 21:20:29 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		parse_entry(void)
 		if ((ret = -1) && line)
 			ft_strdel(&line);
 		if (get_next_line(FD, &line) <= 0)
-			return (0);
+			return (finish_read(&line));
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 			ret = add_position(&line, FD, START);
 		else if (line[0] == '#')
@@ -108,4 +108,10 @@ int		add_pipe(char **pipe)
 	}
 	free_tab(pipe);
 	return (0);
+}
+
+int		finish_read(char **line)
+{
+	ft_strdel(line);
+	return (-1);
 }

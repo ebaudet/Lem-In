@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:14:01 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 20:15:32 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 21:21:10 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	add_nb_ant(void)
 
 	d = data_init();
 	if (get_next_line(FD, &str) <= 0)
-		ft_error("ERROR1");
+		ft_error("ERROR");
 	while (str[0] == '#')
 	{
 		ft_strdel(&str);
 		if (get_next_line(FD, &str) <= 0)
-			ft_error("ERROR2");
+			ft_error("ERROR");
 	}
 	if (!ft_is_number(str))
 		ft_error("Fist line isn't a number");

@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:53 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 04:27:51 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 21:20:18 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int				parse_entry(void);
 int				add_position(char **line, int fd, int pos);
 int				add_room(char **room, int pos);
 int				add_pipe(char **pipe);
+int				finish_read(char **line);
 
 /*
 ** room.c
