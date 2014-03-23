@@ -29,7 +29,7 @@ int		parse_entry(void)
 		if (get_next_line(FD, &line) <= 0)
 			return (0);
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
-			ret = add_position(FD, START);
+			ret = add_position(&line, FD, START);
 		else if (line[0] == '#')
 			continue ;
 		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
@@ -43,17 +43,16 @@ int		parse_entry(void)
 	}
 }
 
-int		add_position(int fd, int pos)
+int		add_position(char **line, int fd, int pos)
 {
-	char	*line;
 	char	**tmp;
 	int		ret;
 
-	if (!ft_strcmp(line, "##end"))
+	if (!ft_strcmp(*line, "##end"))
 		pos = END;
 	ret = -1;
-	ft_strdel(&line);
-	if ((get_next_line(fd, &line) > 0) && (tmp = ft_strsplit(line, ' '))
+	ft_strdel(line);
+	if ((get_next_line(fd, line) > 0) && (tmp = ft_strsplit(*line, ' '))
 		&& tmp[1])
 		ret = add_room(tmp, pos);
 	return (ret);

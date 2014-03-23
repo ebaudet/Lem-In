@@ -6,7 +6,7 @@
 #    By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/18 21:00:06 by ebaudet           #+#    #+#              #
-#    Updated: 2014/02/18 21:00:06 by ebaudet          ###   ########.fr        #
+#    Updated: 2014/03/23 19:04:38 by ebaudet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 gdb:
 	make -C libft
 	cc -g $(FLAGS) $(SRCS) -o $(NAME) $(INC) $(INC) $(LIB)
-	lldb $(NAME)
+	gdb $(NAME)
 
 clean:
 	rm -rf .obj

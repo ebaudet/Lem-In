@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/23 22:42:05 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 02:25:20 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 19:09:44 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	follow_path(t_data *d)
 	int			i;
 
 	new_lemin = 1;
+	d->path = d->path->next;
 	tmp = d->path;
 	tmp->this_ant = new_lemin;
 	tmp->ant += 1;
@@ -31,7 +32,7 @@ void	follow_path(t_data *d)
 		tmp = d->path;
 		while (tmp->next)
 			tmp = tmp->next;
-		while (tmp)
+		while (tmp->prev)
 		{
 			in_node(tmp, &new_lemin, &i, d);
 			tmp = tmp->prev;
