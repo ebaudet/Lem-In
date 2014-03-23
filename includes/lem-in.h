@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:53 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 02:22:38 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:52:00 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				ft_is_number(char *str);
 ** data.c
 */
 t_data			*data_init(void);
-void			add_nb_ant(char *str);
+void			add_nb_ant(void);
 
 /*
 ** parser.c
@@ -95,7 +95,7 @@ void			pipe_room(t_room *room, t_room *pipe);
 /*
 ** tools.c
 */
-int				free_tab(char **tab);
+int				free_tab(char ***tab);
 
 /*
 ** print.c

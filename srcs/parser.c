@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:17:54 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 02:23:49 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 03:08:05 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@ int		parse_entry(void)
 	char	**tmp;
 	int		ret;
 
-	if (get_next_line(FD, &line) <= 0)
-		return (-1);
-	add_nb_ant(line);
-	while (get_next_line(FD, &line) > 0)
+	line = NULL;
+	add_nb_ant();
+	while (42)
 	{
-		if (!ft_strcmp(line, "##start"))
+		if (line)
+			ft_strdel(&line);
+		if (get_next_line(FD, &line) <= 0)
+			return (0);
+		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 			ret = add_position(FD, START);
-		else if (!ft_strcmp(line, "##end"))
-			ret = add_position(FD, END);
 		else if (line[0] == '#')
 			continue ;
 		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
 			ret = add_room(tmp, 0);
-		else if ((tmp = ft_strsplit(line, '-')) && tmp[1])
+		else if (!free_tab(&tmp) && (tmp = ft_strsplit(line, '-')) && tmp[1])
 			ret = add_pipe(tmp);
-		else
+		else if (!free_tab(&tmp))
 			return (-1);
 		if (ret == -1)
 			return (-1);
 	}
-	return (0);
 }
 
 int		add_position(int fd, int pos)
@@ -49,7 +49,10 @@ int		add_position(int fd, int pos)
 	char	**tmp;
 	int		ret;
 
+	if (!ft_strcmp(line, "##end"))
+		pos = END;
 	ret = -1;
+	ft_strdel(&line);
 	if ((get_next_line(fd, &line) > 0) && (tmp = ft_strsplit(line, ' '))
 		&& tmp[1])
 		ret = add_room(tmp, pos);

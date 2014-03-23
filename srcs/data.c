@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:14:01 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/19 20:14:01 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 02:40:37 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ t_data	*data_init(void)
 	return (d);
 }
 
-void	add_nb_ant(char *str)
+void	add_nb_ant(void)
 {
 	t_data	*d;
+	char	*str;
 
 	d = data_init();
+	if (get_next_line(FD, &str) <= 0)
+		ft_error("ERROR");
 	while (str[0] == '#')
 	{
 		ft_strdel(&str);
