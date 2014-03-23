@@ -6,13 +6,12 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:22 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 21:20:59 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 21:28:57 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 #include "libft.h"
-#include <unistd.h>
 
 int		main(void)
 {
