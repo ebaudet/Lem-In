@@ -95,7 +95,7 @@ void			pipe_room(t_room *room, t_room *pipe);
 /*
 ** tools.c
 */
-int				free_tab(char ***tab);
+int				free_tab(char **tab);
 
 /*
 ** print.c

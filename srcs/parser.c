@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 20:17:54 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 03:08:05 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 20:38:08 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		parse_entry(void)
 	add_nb_ant();
 	while (42)
 	{
-		if (line)
+		if ((ret = -1) && line)
 			ft_strdel(&line);
 		if (get_next_line(FD, &line) <= 0)
 			return (0);
@@ -34,10 +34,9 @@ int		parse_entry(void)
 			continue ;
 		else if ((tmp = ft_strsplit(line, ' ')) && tmp[1])
 			ret = add_room(tmp, 0);
-		else if (!free_tab(&tmp) && (tmp = ft_strsplit(line, '-')) && tmp[1])
+		else if (!free_tab(tmp) && !(tmp = NULL)
+			&& (tmp = ft_strsplit(line, '-')) && tmp[1])
 			ret = add_pipe(tmp);
-		else if (!free_tab(&tmp))
-			return (-1);
 		if (ret == -1)
 			return (-1);
 	}
@@ -84,6 +83,7 @@ int		add_room(char **room, int pos)
 		d->start = new;
 	else if (pos == END && d->end == NULL)
 		d->end = new;
+	free(room);
 	return (0);
 }
 
@@ -95,6 +95,17 @@ int		add_pipe(char **pipe)
 	while (pipe[i])
 		i++;
 	if (i != 2)
+	{
+		free_tab(pipe);
+		pipe = NULL;
 		return (-1);
-	return (list_add_pipe(pipe[0], pipe[1]));
+	}
+	if (list_add_pipe(pipe[0], pipe[1]) == -1)
+	{
+		free_tab(pipe);
+		pipe = NULL;
+		return (-1);
+	}
+	free_tab(pipe);
+	return (0);
 }

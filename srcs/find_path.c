@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/23 22:23:49 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/02/23 22:23:49 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 20:15:39 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	find_path(t_data *d)
 		if (!find_good_node(&scout, 0, d))
 		{
 			if (!find_good_node(&scout, 1, d))
-				ft_error("ERROR");
+				ft_error("ERROR3");
 		}
 	}
 }
