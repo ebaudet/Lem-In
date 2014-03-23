@@ -6,11 +6,11 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 21:12:22 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/23 18:18:30 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/23 19:01:47 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-de "lem-in.h"
+#include "lem-in.h"
 #include "libft.h"
 
 int		main(void)
