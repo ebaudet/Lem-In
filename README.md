@@ -54,13 +54,13 @@ make gdb    # build with debug symbols and start gdb
 `lem-in` reads from standard input:
 
 ```sh
-./lem-in < sujet1.map
+./lem-in < maps/sujet1.map
 ```
 
 You can also pipe a generated or handwritten map:
 
 ```sh
-cat test.map | ./lem-in
+cat maps/test.map | ./lem-in
 ```
 
 If the input is invalid or no path can be found, the program prints:
@@ -68,6 +68,37 @@ If the input is invalid or no path can be found, the program prints:
 ```text
 ERROR
 ```
+
+## Lint Maps
+
+Use the map linter to see input errors with file and line numbers:
+
+```sh
+python3 tools/lint_map.py maps/sujet1.map
+```
+
+Lint every included map:
+
+```sh
+python3 tools/lint_map.py maps/*.map
+```
+
+Show non-fatal warnings, such as duplicate tunnels or self-loop tunnels:
+
+```sh
+python3 tools/lint_map.py --warnings maps/lol.map
+```
+
+Example error output:
+
+```text
+maps/stupid.map:20: error: duplicate coordinates 12 3 first used on line 19
+maps/stupid.map:35: error: ##end appears before a room was assigned to ##end
+maps/stupid.map:37: error: room name must not contain '-'
+```
+
+The linter exits with status `0` when no errors are found and status `1` when
+one or more maps contain errors.
 
 ## Input Format
 
@@ -113,7 +144,7 @@ Rules handled by this implementation:
 Run it with:
 
 ```sh
-./lem-in < sujet1.map
+./lem-in < maps/sujet1.map
 ```
 
 On a successful run, the program first echoes the parsed colony, then prints a
@@ -132,7 +163,7 @@ L3-1
 
 ## Included Maps
 
-The repository includes several map files that can be used for manual testing:
+The repository includes several map files in the folder `maps/` that can be used for manual testing:
 
 - `sujet1.map`
 - `test.map`
@@ -143,7 +174,7 @@ The repository includes several map files that can be used for manual testing:
 Run any of them with:
 
 ```sh
-./lem-in < <map_file>
+./lem-in < maps/<map_file>
 ```
 
 ## Project Layout
@@ -156,6 +187,8 @@ Run any of them with:
 |-- libft/
 |   |-- Makefile
 |   `-- ...
+|-- maps/
+|   `-- *.map
 |-- srcs/
 |   |-- main.c
 |   |-- parser.c
@@ -169,7 +202,8 @@ Run any of them with:
 |   |-- error.c
 |   |-- tools.c
 |   `-- ft_is_number.c
-`-- *.map
+`-- tools/
+    `-- lint_map.py
 ```
 
 Main modules:
@@ -183,6 +217,7 @@ Main modules:
 - `srcs/follow_path.c`: moves ants along the selected path.
 - `srcs/print.c`: prints the colony and ant moves.
 - `libft/`: custom C utility library used by the project.
+- `tools/lint_map.py`: validates map files and reports line-numbered errors.
 
 ## Notes
 
