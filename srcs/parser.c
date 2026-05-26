@@ -46,13 +46,15 @@ int		add_position(char **line, int fd, int pos)
 {
 	char	**tmp;
 	int		ret;
+	int		gnl;
 
 	if (!ft_strcmp(*line, "##end"))
 		pos = END;
 	ret = -1;
 	ft_strdel(line);
-	if ((get_next_line(fd, line) > 0) && (tmp = ft_strsplit(*line, ' '))
-		&& tmp[1])
+	while ((gnl = get_next_line(fd, line)) > 0 && (*line)[0] == '#')
+		ft_strdel(line);
+	if (gnl > 0 && (tmp = ft_strsplit(*line, ' ')) && tmp[1])
 		ret = add_room(tmp, pos, 0);
 	return (ret);
 }
@@ -111,5 +113,5 @@ int		add_pipe(char **pipe)
 int		finish_read(char **line)
 {
 	ft_strdel(line);
-	return (-1);
+	return (0);
 }

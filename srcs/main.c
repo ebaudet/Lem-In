@@ -18,7 +18,8 @@ int		main(void)
 	t_data		*d;
 
 	d = data_init();
-	parse_entry();
+	if (parse_entry() == -1)
+		ft_error("ERROR");
 	if (!d->start || !d->end || d->ant <= 0)
 		ft_error("ERROR");
 	find_path(d);
